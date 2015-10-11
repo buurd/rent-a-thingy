@@ -12,3 +12,5 @@ pom.xml.asc
 .nrepl-port
 /gui-proxy/.idea
 /gui-proxy/.db
+*.iml
+.db

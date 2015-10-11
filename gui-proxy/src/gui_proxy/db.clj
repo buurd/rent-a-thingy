@@ -12,3 +12,6 @@
                                 :url url
                                 :request-date (.toString (java.util.Date.))
                                 :type type})))
+
+(defn count-request []
+  (:cnt (first (select request-info (aggregate (count :id) :cnt)))))

@@ -13,11 +13,13 @@
     (log-get-request :get url)
     (:body (client/get (str "http://www.google.se/#q" url)))))
 
+(defn home []
+  (str "Rent a thingy" " " (db/count-request) " requests handled"))
 
 (defroutes app-routes
   (GET "/" []
    (log-get-request :get "/")
-   "Rent A Thingy")
+   (home))
   (GET "/search/:query" [query] (forward-google-search query))
   (route/not-found "Not Found"))
 

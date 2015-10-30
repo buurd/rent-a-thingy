@@ -1,16 +1,29 @@
 (ns register-user.handler
   (:require [compojure.core :refer :all]
             [compojure.route :as route]
-            [ring.middleware.defaults :refer [wrap-defaults site-defaults]]))
+            [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
+            [ring.middleware.params :refer [wrap-params]]
+            [register-user.db :as db]))
+
+
+(defn validate-and-save! [body]
+  (let [username (get body "username")]
+    (db/insert-registration username  (str body))
+    (str "register-user validate and save" body)))
+
+
+(defn validate-and-get-user [username]
+  (str (db/select-registration username)))
 
 (defroutes app-routes
-           (POST "/register-user/" {body :body} body)
+           (POST "/register-user/" {params :params} (validate-and-save! params))
+           (GET "/registration/:username" [username] (validate-and-get-user username))
            (GET "/" [] "Rent a thingy - register-user")
            (GET "/test/:message" [message] (str "echo: " message))
            (route/not-found "register-user: Not Found"))
 
 (def app
-  (routes app-routes site-defaults))
+  (routes (wrap-params app-routes) site-defaults))
 
 (defn fake-request [routes uri method & params]
   (let [localhost "127.0.0.1"]

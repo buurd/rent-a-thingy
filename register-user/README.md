@@ -9,5 +9,3 @@ CREATE TABLE "user-registration" (
   username VARCHAR (255) NOT NULL,
   content TEXT);
   
-  
-![alt tag](https://travis-ci.org/buurd/rent-a-thingy/register-user.png)

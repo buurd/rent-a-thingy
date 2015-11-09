@@ -8,3 +8,4 @@ CREATE TABLE "user-registration" (
   DATE NOT NULL,
   username VARCHAR (255) NOT NULL,
   content TEXT);
+  

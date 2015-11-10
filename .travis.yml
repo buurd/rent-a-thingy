@@ -1,4 +1,4 @@
-language: clojure
+
 env: 
  - TEST_DIR=register-user
  - TEST_DIR=register-user-req
@@ -13,3 +13,4 @@ notifications:
   slack:
     rooms:
       - jkpg-dev:wSOeyWUF1M8bZXJpKSA6F0Nz#clojure-dojo
+language: clojure

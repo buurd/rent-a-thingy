@@ -1,5 +1,15 @@
 language: clojure
 lein: lein2
-before_install: cd register-user
+env: 
+ - TEST_DIR=register-user
+ - TEST_DIR=register-user-req
+ - TEST_DIR=gui-proxy
 jdk:
   - oraclejdk8
+before_install: 
+ - cd $TEST_DIR
+notifications:
+  slack:
+    rooms:
+      - jkpg-dev:wSOeyWUF1M8bZXJpKSA6F0Nz#clojure-dojo
+language: clojure

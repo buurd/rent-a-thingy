@@ -1,7 +1,8 @@
 (ns register-user.handler-test
   (:require [clojure.test :refer :all]
             [ring.mock.request :as mock]
-            [register-user.handler :refer :all]))
+            [register-user.handler :refer :all]
+            [register-user.db :as db]))
 
 (deftest test-app
   (testing "main route"

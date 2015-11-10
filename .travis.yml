@@ -1,12 +1,11 @@
 language: clojure
-lein: lein2
 env: 
  - TEST_DIR=register-user
  - TEST_DIR=register-user-req
  - TEST_DIR=gui-proxy
 jdk:
   - oraclejdk8
-script: cd $TEST_DIR && lein deps && lein test  
+script: cd $TEST_DIR && lein2 deps && lein2 test  
 notifications:
   slack:
     rooms:

@@ -7,7 +7,7 @@ env:
 jdk:
   - oraclejdk8
 before_install: 
- - cd TEST_DIR
+ - cd $TEST_DIR
 notifications:
   slack:
     rooms:

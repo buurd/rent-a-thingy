@@ -3,3 +3,7 @@ lein: lein2
 before_install: cd register-user
 jdk:
   - oraclejdk8
+notifications:
+  slack:
+    rooms:
+      - jkpg-dev:wSOeyWUF1M8bZXJpKSA6F0Nz#clojure-dojo

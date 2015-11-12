@@ -1,7 +1,7 @@
 (ns gui-proxy.db)
 (use 'korma.db)
 
-(defdb db (sqlite3 {:db ".db/gui-proxy.db"}))
+(defdb db (sqlite3 {:db "db/gui-proxy.db"}))
 
 (use 'korma.core)
 (defentity request-info)

@@ -14,10 +14,11 @@
     (client/get (str "http://www.google.se/#q" url))))
 
 (defn forward-register-user [body]
-  (let [url (str "http://localhost:3001/register-user/")]
+  (let [url (str "http://localhost:3001/register-user/"),
+        bodystr (slurp body)]
     (print body)
     (log-request ":post" url)
-    (client/post url {:body body})))
+    (client/request {:url url :body bodystr :method :post :content-type :application/x-www-form-urlencoded})))
 
 (defn forward-register-user-test [message]
   (let [url (str "http://localhost:3001/test/" message)]

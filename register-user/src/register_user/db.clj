@@ -3,7 +3,7 @@
 
 (use 'korma.db)
 
-(defdb db (sqlite3 {:db ".db/register-user.db"}))
+(defdb db (sqlite3 {:db "db/register-user.db"}))
 
 (use 'korma.core)
 (defentity user-registration)
@@ -16,6 +16,6 @@
                                      :content           content})))
 
 (defn select-registration [username]
-  (first (select user-registration
-                (fields :username :content :registration-date :id)
-                (where {:username username} ))))
+  (select user-registration
+          (fields :username :content :registration-date :id)
+          (where {:username username}) (limit 1)))

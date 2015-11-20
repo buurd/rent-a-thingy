@@ -15,9 +15,8 @@
 
 (defn forward-register-user [body]
   (let [url (str "http://localhost:3001/register-user/")]
-    (print body)
     (log-request ":post" url)
-    (client/post url {:body body})))
+    (client/post url {:body (slurp body)} )))
 
 (defn forward-register-user-test [message]
   (let [url (str "http://localhost:3001/test/" message)]

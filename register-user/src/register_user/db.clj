@@ -1,4 +1,5 @@
-(ns register-user.db)
+(ns register-user.db
+  (:import (java.util Date)))
 
 (use 'korma.db)
 
@@ -10,7 +11,7 @@
 
 (defn insert-registration [username content]
   (insert user-registration (values {
-                                     :registration-date (.toString (java.util.Date.))
+                                     :registration-date (.toString (Date.))
                                      :username          username
                                      :content           content})))
 

@@ -8,15 +8,16 @@
 
 (defn validate-and-save! [body]
   (try (let [username (get body "username")]
-         (db/insert-registration username  (str body))
-         (str "register-user validate and save" body))
-       (catch Exception e {:status 500 :body (str "SQL-fel " (.getMessage e))})))
+         (db/insert-registration username (str body))
+         (str "register-user validate and save" body)
+         )
+       (catch Exception e {:status 500 :body (str "SQL-fel insert " (.getMessage e))})))
 
 
 (defn validate-and-get-user [username]
   (try
     (str (db/select-registration username))
-    (catch Exception e {:status 500 :body (str "SQL-fel " (.getMessage e))})))
+    (catch Exception e {:status 500 :body (str "SQL-fel select " (.getMessage e))})))
 
 (defroutes app-routes
            (POST "/register-user/" {params :params} (validate-and-save! params))

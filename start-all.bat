@@ -8,5 +8,7 @@ cd register-user
 start "register-user" lein ring server-headless
 cd .. 
  
- 
+cd user-info
+start "user-info" lein ring server-headless
+cd ..  
  

@@ -11,7 +11,10 @@
        (is (= (:status response) 200))))
   (testing "register-user"
     (let [response (client/get "http://localhost:3001" )]
-      (is (= (:status response) 200)))))
+      (is (= (:status response) 200))))
+  (testing "user-info"
+    (let [response (client/get "http://localhost:3002")]
+      (is (= (:status response 200))))))
 
 (defn -main
 []

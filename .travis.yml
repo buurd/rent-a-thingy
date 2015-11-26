@@ -22,5 +22,5 @@ deploy:
   file: gui-proxy.jar
   on:
 	tags: true
-    repo: buurd/rent-a-thingy
+    
 	

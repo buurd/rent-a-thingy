@@ -1,5 +1,5 @@
 language: clojure
-script: lein deps install test
+script: lein test && lein install
 env:
 - TEST_DIR=register-user
 - TEST_DIR=register-user-req

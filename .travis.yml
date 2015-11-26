@@ -21,6 +21,4 @@ deploy:
   file_glob: true
   file: gui-proxy.jar
   on:
-	tags: true
-    
-	
+    tags: true

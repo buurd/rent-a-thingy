@@ -1,5 +1,5 @@
 language: clojure
-lein: lein2
+script: lein deps install test
 env:
 - TEST_DIR=register-user
 - TEST_DIR=register-user-req
@@ -12,10 +12,13 @@ notifications:
   slack:
     rooms:
     - jkpg-dev:wSOeyWUF1M8bZXJpKSA6F0Nz#clojure-dojo
+before_deploy
+- export FILE_NAME=$(ls target/*.jar)
 deploy:
   provider: releases
   api_key:
     secure: dym/StjZ8X66zB9ZtfAVZLqQal1Tq014OeqSn9sZszGPs9eW9dzGtqxECyBA9Amfsk9qd7CIzhBJ0clLOsGonq3YspCtP7m6PLfe3eqht/nThTEsdkrhembKgaeOBtzpCbj8BavFb9hKnhp7dzlm9xH0PiPX/wVUo3xtWX05uXypO9KNwH1jX7ZJApXYBXnAe0MqjAdng+NQi58bTwtRK/NKgBN4XWbkKchdruRglpFxFJBbqgJXxqEmXPaS1rpdoa3hLTE7DhQsE1lOELuQDUM7mLRPnOWXvsDjHTmNz0+PBEhCeBdRrLGQEPI0XXk6OXACURI02WeYx4al4YSOG9LQUZMysJdtH1snWQc70560og0ZI9qrlkFWQFfXSAFnwDWqgTpHNtsRd7YysuHxTU/vgopIkxhac4C920g6tEzSukFUpPHCcbTC+uLZsF8xi3IdyeloHMEIBpL1fikeEkXLGT/G5vLFXVO+PI7TTyGaK1jak1fQWyS6q7cudysM1Trk9gpnI6UYVAm7ZvUymittMO6SU2DsbDQ2LyAYaRgFqA4VruCvq12ZRqzmwLG+wqq4cTRfeUWSCB1hLrlFS9SAd4Wqfj587mpvjUF178CCvKxzrTMePnJu55UADFrdV3gU4n0JS12NhA+tXZrJ8g8nKe86RpOZskykzmIuMfg=
+  file_glob: true
   file: gui-proxy.jar
   on:
     repo: buurd/rent-a-thingy

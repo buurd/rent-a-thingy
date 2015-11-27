@@ -29,7 +29,7 @@ deploy:
     secure: dym/StjZ8X66zB9ZtfAVZLqQal1Tq014OeqSn9sZszGPs9eW9dzGtqxECyBA9Amfsk9qd7CIzhBJ0clLOsGonq3YspCtP7m6PLfe3eqht/nThTEsdkrhembKgaeOBtzpCbj8BavFb9hKnhp7dzlm9xH0PiPX/wVUo3xtWX05uXypO9KNwH1jX7ZJApXYBXnAe0MqjAdng+NQi58bTwtRK/NKgBN4XWbkKchdruRglpFxFJBbqgJXxqEmXPaS1rpdoa3hLTE7DhQsE1lOELuQDUM7mLRPnOWXvsDjHTmNz0+PBEhCeBdRrLGQEPI0XXk6OXACURI02WeYx4al4YSOG9LQUZMysJdtH1snWQc70560og0ZI9qrlkFWQFfXSAFnwDWqgTpHNtsRd7YysuHxTU/vgopIkxhac4C920g6tEzSukFUpPHCcbTC+uLZsF8xi3IdyeloHMEIBpL1fikeEkXLGT/G5vLFXVO+PI7TTyGaK1jak1fQWyS6q7cudysM1Trk9gpnI6UYVAm7ZvUymittMO6SU2DsbDQ2LyAYaRgFqA4VruCvq12ZRqzmwLG+wqq4cTRfeUWSCB1hLrlFS9SAd4Wqfj587mpvjUF178CCvKxzrTMePnJu55UADFrdV3gU4n0JS12NhA+tXZrJ8g8nKe86RpOZskykzmIuMfg=
   file_glob: true
   file:
-    - "target/$FILE_NAME"
+    - $FILE_NAME
   on:
     tags: false
     repo: buurd/rent-a-thingy

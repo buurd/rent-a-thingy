@@ -19,7 +19,7 @@ before_deploy:
   - export FILE_NAME=$(ls target/*.jar)
   - git config --global user.email "builds@travis-ci.com"
   - git config --global user.name "Travis CI"
-  - export GIT_TAG=$TRAVIS_BRANCH-0.1.$TRAVIS_BUILD_NUMBER
+  - export GIT_TAG=$TRAVIS_BRANCH-0.1.$TRAVIS_JOB_NUMBER
   - git tag $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
   - git push -q https://$GITHUB_TOKEN@github.com/buurd/rent-a-thingy --tags
   - ls -R

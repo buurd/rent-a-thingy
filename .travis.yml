@@ -32,4 +32,4 @@ deploy:
     - $FILE_NAME
   on:
     tags: false
-    repo: buurd/rent-a-thingy
+    all_branches: true

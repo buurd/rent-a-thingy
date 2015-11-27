@@ -11,8 +11,7 @@ before_install:
 notifications:
   slack:
     rooms:
-    - jkpg-dev:wSOeyWUF1M8bZXJpKSA6F0Nz#clojure-dojo
-	
+    - jkpg-dev:wSOeyWUF1M8bZXJpKSA6F0Nz#clojure-dojo	
 before_deploy:
   - export FILE_NAME=$(ls target/*.jar)
   - git config --global user.email "builds@travis-ci.com"
@@ -30,4 +29,4 @@ deploy:
     - "target/$FILE_NAME"
   on:
     tags: false
-    all_branches: true
+    repo: buurd/rent-a-thingy

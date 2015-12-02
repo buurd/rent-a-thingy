@@ -16,7 +16,7 @@ branches:
   except:
     - /^*-v[0-9]/	
 before_deploy:
-  - ls target/
+  - ls target/*.jar
   - export FILE_NAME=$(ls target/*.jar)
   - git config --global user.email "builds@travis-ci.com"
   - git config --global user.name "Travis CI"

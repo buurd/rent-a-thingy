@@ -4,6 +4,7 @@ env:
 - TEST_DIR=register-user
 - TEST_DIR=register-user-req
 - TEST_DIR=gui-proxy
+- TEST_DIR=register-tool
 jdk:
 - oraclejdk8
 before_install:

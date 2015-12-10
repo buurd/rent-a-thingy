@@ -10,7 +10,7 @@
                  [org.xerial/sqlite-jdbc "3.7.15-M1"]
                  [ring-mock "0.1.5"]]
   :plugins [[lein-ring "0.8.13"]]
-  :ring {:handler register-user.handler/app
+  :ring {:handler register-user.handler/app :auto-reload? true
          :port 3001}
   :profiles
   {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]

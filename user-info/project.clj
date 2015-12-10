@@ -6,7 +6,7 @@
                  [compojure "1.4.0"]
                  [ring/ring-defaults "0.1.5"]]
   :plugins [[lein-ring "0.9.7"]]
-  :ring {:handler user-info.handler/app}
+  :ring {:handler user-info.handler/app :auto-reload? true :port 3002}
   :profiles
   {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
                         [ring/ring-mock "0.3.0"]]}})

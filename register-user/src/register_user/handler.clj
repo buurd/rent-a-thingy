@@ -16,7 +16,7 @@
 
 (defn validate-and-get-user [username]
   (try
-    (str (db/select-registration username))
+    (apply str (db/select-registration username))
     (catch Exception e {:status 500 :body (str "SQL-fel select " (.getMessage e))})))
 
 (defroutes app-routes

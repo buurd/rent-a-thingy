@@ -35,7 +35,7 @@
   (str "Rent a thingy - gui-proxy" " " (db/count-request) " requests handled"))
 
 (defn log-error []
-  (log-request ":fail" "fail")
+  ;;(log-request ":fail" "fail")
   "gui-proxy - File not found")
 
 (defroutes app-routes

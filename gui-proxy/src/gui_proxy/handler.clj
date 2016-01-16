@@ -21,13 +21,13 @@
 
 (defn forward-register-user-test [message]
   (let [url (str "http://localhost:3001/test/" message)]
-    (log-request ":get"  url)
+    (log-request ":get" url)
     (:body (client/get url))))
 
 
 (defn forward-register-user-get [user]
   (let [url (str "http://localhost:3001/registration/" user)]
-    (log-request ":get"  url)
+    (log-request ":get" url)
     (:body (client/get url))))
 
 (defn home []
@@ -35,14 +35,27 @@
   (str "Rent a thingy - gui-proxy" " " (db/count-request) " requests handled"))
 
 (defn log-error []
-  ;;(log-request ":fail" "fail")
   "gui-proxy - File not found")
+
+(defn forward-user-info-get
+  ([user]
+   (let [url (str "http://localhost:3002/get/" user)]
+     (log-request ":get" url)
+     (:body (client/get url))))
+  ([user update-id]
+   (let [url (str "http://localhost:3002/get/" user "/" update-id)]
+     (log-request ":get" url)
+     (:body (client/get url)))))
+
+
 
 (defroutes app-routes
            (GET "/search/:query" [query] (forward-google-search query))
            (POST "/register-user/register" {body :body} (forward-register-user body))
            (GET "/register-user/get/:user" [user] (forward-register-user-get user))
            (GET "/register-user/test/:message" [message] (forward-register-user-test message))
+           (GET "/user-info/get/:user" [user] (forward-user-info-get user))
+           (GET "/user-info/get/:user/:update-id" [user update-id] (forward-user-info-get user update-id))
            (GET "/" []
              (log-request ":get" "/")
              (home))

@@ -47,6 +47,11 @@
      (log-request ":get" url)
      (:body (client/get url)))))
 
+(defn forward-user-info-add [body]
+  (let [url (str "http://localhost:3002/add"),
+        bodystr (slurp body)]
+    (log-request ":post" url)
+    (client/request {:url url :body bodystr :method :post :content-type :application/x-www-form-urlencoded})))
 
 
 (defroutes app-routes
@@ -56,6 +61,7 @@
            (GET "/register-user/test/:message" [message] (forward-register-user-test message))
            (GET "/user-info/get/:user" [user] (forward-user-info-get user))
            (GET "/user-info/get/:user/:update-id" [user update-id] (forward-user-info-get user update-id))
+           (POST "/user-info/add" {body :body} (forward-user-info-add body))
            (GET "/" []
              (log-request ":get" "/")
              (home))

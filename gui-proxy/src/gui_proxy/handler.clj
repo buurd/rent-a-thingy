@@ -8,22 +8,11 @@
 (defn log-request [type url]
   (db/insert-request-info type url))
 
-(defn forward-google-search [query]
-  (let [url (str "http://www.google.se/#q" query)]
-    (log-request ":get" url)
-    (client/get (str "http://www.google.se/#q" url))))
-
 (defn forward-register-user [body]
   (let [url (str "http://localhost:3001/register-user/"),
         bodystr (slurp body)]
     (log-request ":post" url)
     (client/request {:url url :body bodystr :method :post :content-type :application/x-www-form-urlencoded})))
-
-(defn forward-register-user-test [message]
-  (let [url (str "http://localhost:3001/test/" message)]
-    (log-request ":get" url)
-    (:body (client/get url))))
-
 
 (defn forward-register-user-get [user]
   (let [url (str "http://localhost:3001/registration/" user)]
@@ -53,12 +42,9 @@
     (log-request ":post" url)
     (client/request {:url url :body bodystr :method :post :content-type :application/x-www-form-urlencoded})))
 
-
 (defroutes app-routes
-           (GET "/search/:query" [query] (forward-google-search query))
            (POST "/register-user/register" {body :body} (forward-register-user body))
            (GET "/register-user/get/:user" [user] (forward-register-user-get user))
-           (GET "/register-user/test/:message" [message] (forward-register-user-test message))
            (GET "/user-info/get/:user" [user] (forward-user-info-get user))
            (GET "/user-info/get/:user/:update-id" [user update-id] (forward-user-info-get user update-id))
            (POST "/user-info/add" {body :body} (forward-user-info-add body))
@@ -69,5 +55,3 @@
 
 (def app
   (routes app-routes site-defaults))
-
-

@@ -3,11 +3,11 @@
   :url "http://example.com/FIXME"
   :min-lein-version "2.0.0"
   :dependencies [[org.clojure/clojure "1.8.0"]
-                 [compojure "1.3.1"]
-                 [ring/ring-defaults "0.1.2"]
-                 [clj-http "2.0.0"]
-                 [korma "0.4.0"]
-                 [org.xerial/sqlite-jdbc "3.7.15-M1"]]
+                 [compojure "1.4.0"]
+                 [ring/ring-defaults "0.1.5"]
+                 [clj-http "2.0.1"]
+                 [korma "0.4.2"]
+                 [org.xerial/sqlite-jdbc "3.8.11.2"]]
   :plugins [[lein-ring "0.8.13"]]
   :ring {:handler gui-proxy.handler/app :auto-reload? true :port 3000}
   :profiles

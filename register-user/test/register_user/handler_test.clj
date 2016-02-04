@@ -16,10 +16,21 @@
       (is (= (:status response) 200))
       (is (= (:body response) "kalle")))))
 
+  (testing "get registration throw exception"
+    (with-redefs [db/select-registration (fn [] (throw (Exception.)))]
+      (let [response (app (mock/request :get "/registration/kalle"))]
+        (is (= (:status response) 500))
+        (is (= (.startsWith(:body response) "SQL-fel"))))))
+
   (testing "register-user"
     (with-redefs [db/insert-registration (constantly {:username "kalle"})]
       (let [response (app (mock/request :post "/register-user/" {:username "kalle"} ))]
         (is (= (:status response) 200)))))
+
+  (testing "register-user throw exeption"
+    (with-redefs [db/insert-registration (fn [] (throw (Exception.)))]
+      (let [response (app (mock/request :post "/register-user/" {:username "kalle"} ))]
+        (is (= (:status response) 500)))))
 
   (testing "not-found route"
     (let [response (app (mock/request :get "/invalid"))]

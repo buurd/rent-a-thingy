@@ -15,7 +15,7 @@
       (let [response (app (mock/request :get "/invalid"))]
         (is (= (:status response) 404))))))
 
-(deftest forward
+(deftest forward-get
   (testing "forward-register-user-get"
     (with-redefs [db/insert-request-info (constantly 0)
                   client/get (fn [url] {:status 200, :body "abc"} )]
@@ -35,6 +35,19 @@
         (is (= (:status response) 200))
         (is (= (:body response) "abc"))))))
 
+(deftest forward-post
+  (testing "forward-register-user-post"
+    (with-redefs [db/insert-request-info (constantly 0)
+                  client/request (fn [url] {:status 200, :body "abc"})]
+      (let [response (app (mock/request :post "/register-user/register" {:username "abc"}))]
+        (is (= (:status response) 200))
+        (is (= (:body response) "abc")))))
+  (testing "forward-user-info-add"
+    (with-redefs [db/insert-request-info (constantly 0)
+                  client/request (fn [url] {:status 200, :body "abc"})]
+      (let [response (app (mock/request :post "/user-info/add" {:username "abc"}))]
+        (is (= (:status response) 200))
+        (is (= (:body response) "abc"))))))
 
 
 

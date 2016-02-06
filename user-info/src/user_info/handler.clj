@@ -6,9 +6,6 @@
             [user-info.db :as db]))
 
 (defn validate-and-save! [body]
-  (println "********************************************************************************")
-  (println (str body))
-  (println "********************************************************************************")
   (try (let [username (get body "username")]
          (db/add-info username (str body))
          (str "register-user validate and save" body)

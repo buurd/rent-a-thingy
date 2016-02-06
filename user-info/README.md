@@ -1,19 +1,7 @@
 # user-info
 
-FIXME
+Delprojekt till rent-a-thingy med scopet att hantera uppdatering av användares uppgifter. 
 
-## Prerequisites
-
-You will need [Leiningen][] 2.0.0 or above installed.
-
-[leiningen]: https://github.com/technomancy/leiningen
-
-## Running
-
-To start a web server for the application, run:
-
-    lein ring server
-
-## License
-
-Copyright © 2015 FIXME
+## Database
+Projektet behöver en database, SQLite3, som ska finns i db-mappen med namnet user-info.db. Det ska finnas en tabell enligt följade:
+CREATE TABLE "request-info" (id INTEGER PRIMARY KEY AUTOINCREMENT, "request-date" DATE NOT NULL, url VARCHAR (255) NOT NULL, type VARCHAR (255) NOT NULL);

@@ -1,7 +1,9 @@
 # register-user
 
+Delprojekt i rent-a-thingy med scopet att registrera användare.
 
-Det behöver skapas en databas i .db med namn reister-user. Följande tabell ska skapas:
+## Database
+Det behöver skapas en databas i .db med namn register-user. Följande tabell ska skapas:
 CREATE TABLE "user-registration" (
   id INTEGER PRIMARY KEY,
   "registration-date"

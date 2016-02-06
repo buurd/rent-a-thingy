@@ -1,19 +1,4 @@
 # rent-a-thingy-req
 
-FIXME
+Projekt för att testa att alla tjänster i rent-a-thingy hänger ihop och fungerar som de ska. Kräver att alla deltjänsterna är igång. 
 
-## Prerequisites
-
-You will need [Leiningen][] 2.0.0 or above installed.
-
-[leiningen]: https://github.com/technomancy/leiningen
-
-## Running
-
-To start a web server for the application, run:
-
-    lein ring server
-
-## License
-
-Copyright © 2015 FIXME

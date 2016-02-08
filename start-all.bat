@@ -17,4 +17,9 @@ REM register-tool
 cd register-tool
 start "register-tool" lein ring server-headless
 cd .. 
+
+REM current-user
+cd current-user
+start "current-user" lein ring server-headless
+cd .. 
  

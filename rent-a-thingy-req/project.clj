@@ -5,7 +5,8 @@
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [compojure "1.4.0"]
                  [ring/ring-defaults "0.1.5"]
-                 [clj-http "2.0.0"]]
+                 [clj-http "2.0.0"]
+                 [clj-time "0.11.0"]]
   :plugins [[lein-ring "0.9.7"]]
   :main rent-a-thingy-req.main
   :ring {:handler rent-a-thingy-req.handler/app}

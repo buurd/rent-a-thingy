@@ -4,7 +4,7 @@
             [clj-time.core :as time])
   (:import (java.util UUID)))
 
-(deftest "current-user"
+(deftest current-user
   "Verfifera att vi kan registera en användare och sedan kan utiforska användaren"
   (testing "user-with-registration-only"
     (let [uuid (.toString (UUID/randomUUID))]
@@ -13,7 +13,8 @@
         (is (= (:status response) 200) "Skapar användare"))
       (let [response (client/get (str "http://localhost:3000/current-user/get/" uuid "/" (.toString (time/now))) {:throw-exceptions false})]
         (is (= (:status response) 200))
-        (is (= uuid (:username (read-string (:body response)))) "Söker efter den skapade användaren")))))
+        (is (= uuid (:username (read-string (:body response)))) "Söker efter den skapade användaren")
+        ))))
 
 
 

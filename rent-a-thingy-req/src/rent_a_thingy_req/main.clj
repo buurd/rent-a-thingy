@@ -10,4 +10,5 @@
 []
   (run-tests 'rent-a-thingy-req.is-services-running)
   (run-tests 'rent-a-thingy-req.registration)
-  (run-tests 'rent-a-thingy-req.user-info))
+  (run-tests 'rent-a-thingy-req.user-info)
+  (run-tests 'rent-a-thingy-req.current-user))

@@ -6,6 +6,7 @@
             [user-info.db :as db]))
 
 (defn validate-and-save! [body]
+  (println "validate-and-save! " body)
   (try (let [username (get body "username")]
          (db/add-info username (str body))
          (str "register-user validate and save" body)
@@ -13,6 +14,7 @@
        (catch Exception e {:status 500 :body (str "SQL-fel insert " (.getMessage e))})))
 
 (defn validate-and-get-user [username]
+  (println "validate-and-get-user " username)
   (try
     (str "(" (apply str  (db/select-info username) )")")
     (catch Exception e {:status 500 :body (str "SQL-fel select " (.getMessage e))})))

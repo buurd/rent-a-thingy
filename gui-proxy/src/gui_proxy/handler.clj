@@ -9,12 +9,14 @@
   (db/insert-request-info type url))
 
 (defn forward-register-user [body]
+  (println "forward-register-user " body)
   (let [url (str "http://localhost:3001/register-user/"),
         bodystr (slurp body)]
     (log-request ":post" url)
-    (client/request {:url url :body bodystr :method :post :content-type :application/x-www-form-urlencoded})))
+    (client/request {:url url :body bodystr :method :post :content-type :application/x-www-form-urlencoded :socket-timeout 1000 :conn-timeout 1000})))
 
 (defn forward-register-user-get [user]
+  (println "forward-register-user-get " user)
   (let [url (str "http://localhost:3001/registration/" user)]
     (log-request ":get" url)
     (:body (client/get url))))
@@ -28,24 +30,28 @@
 
 (defn forward-user-info-get
   ([user]
-   (let [url (str "http://localhost:3002/get/" user)]
+   (println "forward-user-info-get " user)
+   (let [url (str "http://localhost:3002/get/" user)  ]
      (log-request ":get" url)
-     (:body (client/get url))))
+     (:body (client/get url {:socket-timeout 1000 :conn-timeout 1000}))))
   ([user update-id]
-   (let [url (str "http://localhost:3002/get/" user "/" update-id)]
+   (println "forward-user-info-get " user  " " update-id)
+   (let [url (str "http://localhost:3002/get/" user "/" update-id) ]
      (log-request ":get" url)
-     (:body (client/get url)))))
+     (:body (client/get url {:socket-timeout 1000 :conn-timeout 1000})))))
 
 (defn forward-user-info-add [body]
+  (println "forward-user-info-add " body)
   (let [url (str "http://localhost:3002/add"),
         bodystr (slurp body)]
     (log-request ":post" url)
-    (client/request {:url url :body bodystr :method :post :content-type :application/x-www-form-urlencoded})))
+    (client/request {:url url :body bodystr :method :post :content-type :application/x-www-form-urlencoded  :socket-timeout 1000 :conn-timeout 1000})))
 
 (defn forward-current-user-get [user timestamp]
+  (println "forward-current-user-get " user " " timestamp)
   (let [url (str "http://localhost:3004/get/" user "/" timestamp)]
     (log-request ":get" url)
-    (:body (client/get url))))
+    (:body (client/get url {:socket-timeout 1000 :conn-timeout 1000}))))
 
 (defroutes app-routes
            (GET "/current-user/get/:user/:timestamp" [user timestamp] (forward-current-user-get user timestamp))

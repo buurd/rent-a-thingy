@@ -19,8 +19,6 @@
   (let [uuid (.toString (UUID/randomUUID))]
     (let [response
           (client/post "http://localhost:3000/user-info/add" {:form-params {:username uuid} :throw-exceptions false})]
-      (is (= (:status response 200))) "Uppdatera användare"
-      )
+      (is (= (:status response 200))) "Uppdatera användare")
     (let [response (client/get (str "http://localhost:3000/user-info/get/" uuid) {:throw-exceptions false})]
-      (println (first (read-string (:body response))))
       (is (= uuid (:username (first (read-string (:body response))))) "Listan ska inte vara tom"))))

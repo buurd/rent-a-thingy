@@ -33,7 +33,7 @@
    (println "forward-user-info-get " user)
    (let [url (str "http://localhost:3002/get/" user)  ]
      (log-request ":get" url)
-     (:body (client/get url {:socket-timeout 1000 :conn-timeout 1000}))))
+     (:body (client/get url))))
   ([user update-id]
    (println "forward-user-info-get " user  " " update-id)
    (let [url (str "http://localhost:3002/get/" user "/" update-id) ]

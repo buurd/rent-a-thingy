@@ -18,19 +18,19 @@
 (deftest forward-get
   (testing "forward-register-user-get"
     (with-redefs [db/insert-request-info (constantly 0)
-                  client/get (fn [url] {:status 200, :body "abc"} )]
-      (let [response (app (mock/request :get "/register-user/get/asd"))]
+                  client/get (fn [url] {:status 200, :body "abc"})]
+      (let [response (app (mock/request :get "/register-user/get/asd" ))]
         (is (= (:status response) 200))
         (is (= (:body response) "abc")))))
   (testing "forward-user-info-get-1"
     (with-redefs [db/insert-request-info (constantly 0)
                   client/get (fn [url] {:status 200, :body "abc"} )]
-      (let [response (app (mock/request :get "/user-info/get/asd"))]
+      (let [response (app (mock/request :get "/user-info/get/asd" ))]
         (is (= (:status response) 200))
         (is (= (:body response) "abc")))))
   (testing "forward-user-info-get-2"
     (with-redefs [db/insert-request-info (constantly 0)
-                  client/get (fn [url] {:status 200, :body "abc"} )]
+                  client/get (fn [url {}] {:status 200, :body "abc"} )]
       (let [response (app (mock/request :get "/user-info/get/asd/123"))]
         (is (= (:status response) 200))
         (is (= (:body response) "abc"))))))
